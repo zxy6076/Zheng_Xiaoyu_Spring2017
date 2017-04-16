@@ -87,17 +87,17 @@ plt.ylabel('Survied')
 ```
 ![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_1/raw_data_scatter.png)
 
- Because Age data is discrete, so need to calculate the probability of death at the same age bin (divide Age into 20 bins).
- 
+- Because Age data is discrete, so need to calculate the probability of death at the same age bin (divide Age into 20 bins).
  bins = np.linspace(raw_data.Age.min(),raw_data.Age.max(),20)
  
- to group according to whether in the same section
+ - to group according to whether in the same section
  
  groups = raw_data.groupby(np.digitize(raw_data.Age,bins))
 
- calculate the probability 
+ -calculate the probability 
  
  final_data = groups[['Age','Survived']].mean()
+
 
  Finally,plot the data and output the plot
 ```plt.plot(final_data.Age,final_data.Survived,'bo-')
