@@ -91,7 +91,7 @@ plt.ylabel('Survied')
  
  bins = np.linspace(raw_data.Age.min(),raw_data.Age.max(),20)
  
-- to group according to whether in the same section
+- to group according to whether in the same bin
  
 groups = raw_data.groupby(np.digitize(raw_data.Age,bins))
  
