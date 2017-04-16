@@ -12,6 +12,7 @@ import matplotlib.pyplot as plt
 
 ### 1.1 See the variables, then to read the variable description below to understand them. 
  raw_data = pd.read_csv('..\data\Titanic.csv',na_values='N/A')
+ 
  raw_data.head()
 ![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_1/raw_data_head.png) 
 
