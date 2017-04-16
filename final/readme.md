@@ -16,7 +16,7 @@ import matplotlib.pyplot as plt
  ```
 ![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_1/raw_data_head.png) 
 
- From this picture we've got a sense of our variables, their class type, and the first few observations of each.And we can know there is two types of variables--Numerical feature and Categorical feature.
+ From this picture we've got a sense of our variables, their class type, and the first few observations of each. And we can know there is two types of variables--Numerical feature and Categorical feature.
 
 ### 1.2 To get some numerical variables
  raw_data.describe()
@@ -80,7 +80,7 @@ import matplotlib.pyplot as plt
 
 ### 3.1   Analysis one----This analysis is about the probability of death in Titanic relating age
 
- This scatter can detect whether having wrong data 
+ This scatter can detect whether having wrong data, because the value of Survived is either 0(dead) or 1(survived) 
 ```plt.scatter(raw_data.Age,raw_data.Survived,alpha=0.02)
 plt.xlabel('Age')
 plt.ylabel('Survied')
@@ -89,14 +89,17 @@ plt.ylabel('Survied')
 
  Because Age data is discrete, so need to calculate the probability of death at the same age span.
  so divide the age into 20 sections
- bins = np.linspace(raw_data.Age.min(),raw_data.Age.max(),20)
+ ```bins = np.linspace(raw_data.Age.min(),raw_data.Age.max(),20)
  
+ ```
  to group according to whether in the same section
- groups = raw_data.groupby(np.digitize(raw_data.Age,bins))
+ ```groups = raw_data.groupby(np.digitize(raw_data.Age,bins))
  
+ ```
  calculate the probability 
- final_data = groups[['Age','Survived']].mean()
+ ```final_data = groups[['Age','Survived']].mean()
 
+```
  Finally,plot the data and output the plot
 ```plt.plot(final_data.Age,final_data.Survived,'bo-')
 plt.ylim(-0.2,2)
