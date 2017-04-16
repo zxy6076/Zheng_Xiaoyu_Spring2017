@@ -19,12 +19,12 @@ import matplotlib.pyplot as plt
  From this picture we've got a sense of our variables, their class type, and the first few observations of each.And we can know there is two types of variables--Numerical feature and Categorical feature.
 
 ### 1.2 To get some numerical variables
- ```raw_data.describe()
+```raw_data.describe()
  ```
  ![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_1/raw_data_num_des.png)
  
 ### 1.3 To get some categorical variables 
- ```raw_data.describe(include=['O'])
+ raw_data.describe(include=['O'])
  ```
  ![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_1/raw_data_cate_des.png)
 
