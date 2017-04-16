@@ -10,15 +10,16 @@ import matplotlib.pyplot as plt
 %matplotlib inline
 ```
 
-### 1.1 see the variables, then to read the variable description below to understand them. 
- raw_data = pd.read_csv('..\data\Titanic.csv',na_values='N/A')  #,index_col=0
+### 1.1 See the variables, then to read the variable description below to understand them. 
+ raw_data = pd.read_csv('..\data\Titanic.csv',na_values='N/A')
  raw_data.head()
 ![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_1/raw_data_head.png) 
 
  From this picture we've got a sense of our variables, their class type, and the first few observations of each.And we can know there is two types of variables--Numerical feature and Categorical feature.
 
-### 1.2 to get some numerical variables
+### 1.2 To get some numerical variables
  raw_data.describe()
+ 
  ![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_1/raw_data_num_des.png)
  
 ### 1.3 to get some categorical variables 
