@@ -2,6 +2,7 @@
 
 
 ## Part one ---load and preview the data
+ using Titanic.csv
 ```import pandas as pd
 import numpy as np
 from pandas import DataFrame,Series
@@ -9,22 +10,22 @@ import matplotlib.pyplot as plt
 %matplotlib inline
 ```
 
-### see the variables, then to read the variable description below to understand them. 
+### 1.1 see the variables, then to read the variable description below to understand them. 
  raw_data = pd.read_csv('..\data\Titanic.csv',na_values='N/A')  #,index_col=0
  raw_data.head()
 ![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_1/raw_data_head.png) 
 
  From this picture we've got a sense of our variables, their class type, and the first few observations of each.And we can know there is two types of variables--Numerical feature and Categorical feature.
 
-### to get some numerical variables
+### 1.2 to get some numerical variables
  raw_data.describe()
  ![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_1/raw_data_num_des.png)
  
-### to get some categorical variables 
+### 1.3 to get some categorical variables 
  raw_data.describe(include=['O'])
  ![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_1/raw_data_cate_des.png)
 
-### to test whether have null values
+### 1.4 to test whether have null values
  raw_data.isnull().sum()
  ```PassengerId      0
     Survived         0
@@ -47,15 +48,65 @@ import matplotlib.pyplot as plt
 2. Cabin 
 3. Age
 
- Embarked is categorical,so to choose the most frequent occurance which is s
+### 2.1 Embarked is categorical,so to choose the most frequent occurance which is s
  raw_data['Embarked'] = raw_data['Embarked'].fillna('S')
 
+### 2.2 Cabin is also categorical but has lots of nulls, so drop them
+ raw_data.drop('Cabin',axis=1,inplace=True)
 
- ![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_1/ana_fianl_20s.png)
+### 2.3 Age is numerical,so to fill the null values using median value
+ raw_data.Age=raw_data['Age'].fillna(raw_data['Age'].mean())
+
+### 2.4 Check null values again
+ raw_data.isnull().sum()
+``` PassengerId    0
+    Survived       0
+    Pclass         0
+    Name           0
+    Sex            0
+    Age            0
+    SibSp          0
+    Parch          0
+    Ticket         0
+    Fare           0
+    Embarked       0
+    dtype: int64
+```
+
+## Part there ---Analysis data(Five analysis)
+
+### 3.1   Analysis one----This analysis is about the probability of death in Titanic relating age
+
+ This scatter can detect whether having wrong data 
+```plt.scatter(raw_data.Age,raw_data.Survived,alpha=0.02)
+plt.xlabel('Age')
+plt.ylabel('Survied')
+```
+![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_1/raw_data_scatter.png)
+
+ Because Age data is discrete, so need to calculate the probability of death at the same age span.
+ so divide the age into 20 sections
+ bins = np.linspace(raw_data.Age.min(),raw_data.Age.max(),20)
+ 
+ to group according to whether in the same section
+ groups = raw_data.groupby(np.digitize(raw_data.Age,bins))
+ 
+ calculate the probability 
+ final_data = groups[['Age','Survived']].mean()
+
+ Finally,plot the data and output the plot
+```plt.plot(final_data.Age,final_data.Survived,'bo-')
+plt.ylim(-0.2,2)
+plt.xlim(0,90)
+plt.xlabel('Age')
+plt.ylabel('Probability')
+plt.savefig('ana_fianl_20s.png')
+```
+![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_1/ana_fianl_20s.png)
  
 
  
- ![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_1/raw_data_scatter.png)
+
  ![wrong]()
  
  
