@@ -91,9 +91,11 @@ plt.ylabel('Survied')
 bins = np.linspace(raw_data.Age.min(),raw_data.Age.max(),20)
  
  - to group according to whether in the same section
+ 
 groups = raw_data.groupby(np.digitize(raw_data.Age,bins))
 
  - calculate the probability 
+ 
 final_data = groups[['Age','Survived']].mean()
 
  - Finally,plot the data and output the plot
