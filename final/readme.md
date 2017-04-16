@@ -1,5 +1,5 @@
 # Fianl Report ----Disaster of Titanic
-
+<font color=#00ffff size=3>null</font>
 <font color=#00ffff size=72>Part one ---load and preview the data</font>
 import pandas as pd
 import numpy as np
