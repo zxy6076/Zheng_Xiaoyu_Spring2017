@@ -111,11 +111,13 @@ plt.savefig('ana_fianl_20s.png')
 
 ### 3.2   Analysis Two----To find the highest rate of survived female by ageband
  3.2.1 Load data
- ```raw_data = pd.read_csv('..\data\Titanic.csv',na_values='N/A')
+ ```
+ raw_data = pd.read_csv('..\data\Titanic.csv',na_values='N/A')
 raw_data.head()
 ```
  3.2.2 Deal with null values
-```raw_data['Embarked'] = raw_data['Embarked'].fillna('S')
+```
+raw_data['Embarked'] = raw_data['Embarked'].fillna('S')
 raw_data.drop('Cabin',axis=1,inplace=True)
 raw_data.Age=raw_data['Age'].fillna(raw_data['Age'].mean())
 ```
@@ -126,21 +128,24 @@ fig = plt.figure(figsize=(13,7))
 fig.set(alpha = 0.2)
 ```
  First one is about the count of Pclass
- ```plt.subplot2grid((2,3),(0,0))
+ ```
+ plt.subplot2grid((2,3),(0,0))
 raw_data.Pclass.value_counts().plot(kind='bar')
 plt.ylabel('Count')
 plt.xlabel('Class')
 plt.title('Pclass')
 ```
  Second one is about the count of Survived
-```plt.subplot2grid((2,3),(0,1))
+```
+plt.subplot2grid((2,3),(0,1))
 raw_data.Survived.value_counts().plot(kind='bar')
 plt.ylabel('Count')
 plt.title('Survived')
 ```
 
  Third one is about the distribution of age in class
-```plt.subplot2grid((2,3),(1,0),colspan=2)
+```
+plt.subplot2grid((2,3),(1,0),colspan=2)
 raw_data.Age[raw_data.Pclass==1].plot(kind='kde')
 raw_data.Age[raw_data.Pclass==2].plot(kind='kde')
 raw_data.Age[raw_data.Pclass==3].plot(kind='kde')
@@ -153,7 +158,8 @@ plt.legend(('1','2','3'),loc='best')
 ```
 
  Last one is about the count of each Embarked
-```plt.subplot2grid((2,3),(1,2))
+```
+plt.subplot2grid((2,3),(1,2))
 raw_data.Embarked.value_counts().plot(kind='bar')
 plt.title('Count of each Embarked')
 plt.ylabel("Count")
@@ -162,13 +168,15 @@ plt.savefig('ana_2_multiple.png')
 ![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_2/ana_2_multiple.png)
 
  3.2.4 Keep the columns we need
-```deal_data = raw_data[['Survived','Sex','Age']]
+```
+deal_data = raw_data[['Survived','Sex','Age']]
 deal_data.head()
 ```
 ![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_2/deal_data.png)
 
  3.2.5 Delete data which sex is male
-```female_data = deal_data[deal_data.Sex == 'female']
+```
+female_data = deal_data[deal_data.Sex == 'female']
 female_data.Age= female_data['Age'].fillna(female_data['Age'].mean())
 female_data.isnull().sum()
 female_data.head()
@@ -176,24 +184,28 @@ female_data.head()
 ![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_2/female_data.png)
 
  3.2.6 Change the type of Age into str
- ```female_data['Age']=female_data['Age'].astype(int)
+ ```
+ female_data['Age']=female_data['Age'].astype(int)
 female_data.head()
 ```
 ![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_2/female_data_int.png)
 
  3.2.7 To divide age into 5 band(bins)
- ```female_data['AgeBand'] = pd.cut(female_data['Age'],5)
+ ```
+ female_data['AgeBand'] = pd.cut(female_data['Age'],5)
 female_data.head()
 ```
 ![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_2/ageband.png)
 
  3.2.8  Sort the data according to Survived
-```final_data= female_data[['AgeBand','Survived']].groupby(['AgeBand'],as_index=False).mean().sort_values(by='Survived',ascending=False)
+```
+final_data= female_data[['AgeBand','Survived']].groupby(['AgeBand'],as_index=False).mean().sort_values(by='Survived',ascending=False)
 final_data
 ``` 
  ![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_2/sort_ageband.png)
  
  3.2 Summary
+ 
  From this picture above, we can see the ageband--(50.4, 63] is the highest survived. Because the number of female is small and most of them is survived. For other ageband, the probability is greater than 50%. So the rate of women\`s salvation is higher. 
  
  
