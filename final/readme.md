@@ -121,7 +121,8 @@ raw_data.Age=raw_data['Age'].fillna(raw_data['Age'].mean())
 ```
 
  To draw many pictures in one plot
-```fig = plt.figure(figsize=(13,7))
+```
+fig = plt.figure(figsize=(13,7))
 fig.set(alpha = 0.2)
 ```
  First one is about the count of Pclass
