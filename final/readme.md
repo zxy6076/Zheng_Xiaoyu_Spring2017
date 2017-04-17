@@ -78,7 +78,7 @@ import matplotlib.pyplot as plt
 
 ## Part there ---Analysis data(Five analysis)
 
-### 3.1   Analysis one----This analysis is about the probability of death in Titanic relating age
+### 3.1   Analysis One----This analysis is about the probability of death in Titanic relating age
 
  This scatter can detect whether having wrong data, because the value of Survived is either 0 (dead) or 1 (survived) 
 ```plt.scatter(raw_data.Age,raw_data.Survived,alpha=0.02)
@@ -108,11 +108,86 @@ plt.ylabel('Probability')
 plt.savefig('ana_fianl_20s.png')
 ```
 ![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_1/ana_fianl_20s.png)
- 
 
- 
+### 3.2   Analysis Two----To find the highest rate of survived female by ageband
+ Load data
+ ```raw_data = pd.read_csv('..\data\Titanic.csv',na_values='N/A')
+raw_data.head()
+```
+ Deal with null values
+```raw_data['Embarked'] = raw_data['Embarked'].fillna('S')
+raw_data.drop('Cabin',axis=1,inplace=True)
+raw_data.Age=raw_data['Age'].fillna(raw_data['Age'].mean())
+```
 
- ![wrong]()
- 
- 
+ To draw many pictures in one plot
+```fig = plt.figure(figsize=(13,7))
+fig.set(alpha = 0.2)
+```
+ First one is about the count of Pclass
+ ```plt.subplot2grid((2,3),(0,0))
+raw_data.Pclass.value_counts().plot(kind='bar')
+plt.ylabel('Count')
+plt.xlabel('Class')
+plt.title('Pclass')
+```
+ Second one is about the count of Survived
+```plt.subplot2grid((2,3),(0,1))
+raw_data.Survived.value_counts().plot(kind='bar')
+plt.ylabel('Count')
+plt.title('Survived')
+```
 
+ Third one is about the distribution of age in class
+```plt.subplot2grid((2,3),(1,0),colspan=2)
+raw_data.Age[raw_data.Pclass==1].plot(kind='kde')
+raw_data.Age[raw_data.Pclass==2].plot(kind='kde')
+raw_data.Age[raw_data.Pclass==3].plot(kind='kde')
+plt.xlabel('Age')
+plt.ylabel('Density')
+plt.title('Distribution of age by class')
+plt.ylim(-0.01)
+plt.xlim(0,100)
+plt.legend(('1','2','3'),loc='best')
+```
+
+ Last one is about the count of each Embarked
+```plt.subplot2grid((2,3),(1,2))
+raw_data.Embarked.value_counts().plot(kind='bar')
+plt.title('Count of each Embarked')
+plt.ylabel("Count")
+plt.savefig('ana_2_multiple.png')
+```
+![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_2/ana_2_multiple.png)
+
+
+
+
+
+ ![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_2/ageband.png)
+ 
+ ![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_2/deal_data.png)
+ ![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_2/female_data.png)
+ ![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_2/female_data_int.png)
+ ![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_2/sort_ageband.png)
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+### 3.3   Analysis Three----
+  ![wrong]()
+  ![wrong]() 
+ 
+ 
+### 3.4   Analysis Four---- 
+
+
+
+
+
+### 3.5   Analysis Five---- 
