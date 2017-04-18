@@ -174,7 +174,7 @@ deal_data.head()
 ```
 ![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_2/deal_data.png)
 
- 3.2.5 Delete data which sex is male
+ 3.2.5 Delete data which sex is male 
 ```
 female_data = deal_data[deal_data.Sex == 'female']
 female_data.Age= female_data['Age'].fillna(female_data['Age'].mean())
@@ -190,21 +190,50 @@ female_data.head()
 ```
 ![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_2/female_data_int.png)
 
- 3.2.7 To divide age into 5 band(bins)
+
+ 3.2.7 To divide age into 3 band(bins)
  ```
- female_data['AgeBand'] = pd.cut(female_data['Age'],5)
+ female_data['AgeBand_3'] = pd.cut(female_data['Age'],3)
 female_data.head()
 ```
-![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_2/ageband.png)
+![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_2/AgeBand_31.png)
 
- 3.2.8  Sort the data according to Survived
+ Sort the data according to AgeBand
 ```
-final_data= female_data[['AgeBand','Survived']].groupby(['AgeBand'],as_index=False).mean().sort_values(by='Survived',ascending=False)
-final_data
+final_data_3=female_data[['AgeBand_3','Survived']].groupby(['AgeBand_3'],as_index=False).mean().sort_values(by='AgeBand_3',ascending=True)
+final_data_3
 ``` 
- ![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_2/sort_ageband.png)
+ ![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_2/AgeBand_32.png) 
  
- 3.2 Summary
+3.2.8 To divide age into 5 band(bins)
+ ```
+ female_data['AgeBand_5'] = pd.cut(female_data['Age'],5)
+female_data.head()
+```
+![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_2/AgeBand_51.png)
+
+ Sort the data according to AgeBand
+```
+final_data_5=female_data[['AgeBand_5','Survived']].groupby(['AgeBand_5'],as_index=False).mean().sort_values(by='AgeBand_5',ascending=True)
+final_data_5
+``` 
+ ![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_2/AgeBand_52.png) 
+ 
+ 3.2.9 To divide age into 7 band(bins)
+ ```
+ female_data['AgeBand_7'] = pd.cut(female_data['Age'],7)
+female_data.head()
+```
+![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_2/AgeBand_71.png)
+
+ Sort the data according to AgeBand
+```
+final_data_7=female_data[['AgeBand_7','Survived']].groupby(['AgeBand_7'],as_index=False).mean().sort_values(by='AgeBand_7',ascending=True)
+final_data_7
+``` 
+![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_2/AgeBand_72.png) 
+         
+ 3.2.10 Summary
  
  From this picture above, we can see the ageband--(50.4, 63] is the highest survived. Because the number of female is small and most of them is survived. For other ageband, the probability is greater than 50%. So the rate of women\`s salvation is higher. 
  
