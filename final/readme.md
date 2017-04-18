@@ -224,14 +224,14 @@ final_data_5
  female_data['AgeBand_7'] = pd.cut(female_data['Age'],7)
 female_data.head()
 ```
-![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_2/AgeBand_71.png)
+![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_2/Ageband_71.png)
 
  Sort the data according to AgeBand
 ```
 final_data_7=female_data[['AgeBand_7','Survived']].groupby(['AgeBand_7'],as_index=False).mean().sort_values(by='AgeBand_7',ascending=True)
 final_data_7
 ``` 
-![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_2/AgeBand_72.png) 
+![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_2/Ageband_72.png) 
          
  3.2.10 Summary
  
