@@ -217,7 +217,7 @@ female_data.head()
 final_data_5=female_data[['AgeBand_5','Survived']].groupby(['AgeBand_5'],as_index=False).mean().sort_values(by='AgeBand_5',ascending=True)
 final_data_5
 ``` 
- ![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_2/AgeBand_52.png) 
+![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_2/Ageband_52.png) 
  
  3.2.9 To divide age into 7 band(bins)
  ```
