@@ -235,7 +235,7 @@ final_data_7
          
  3.2.10 Summary
  
- From this picture above, we can see the ageband--(50.4, 63] is the highest survived. Because the number of female is small and most of them is survived. For other ageband, the probability is greater than 50%. So the rate of women\`s salvation is higher. 
+ From this picture above, we can see the age between 50 and 63 is the highest survived. Because the number of female is small and most of them is survived. For other ageband, the probability is greater than 50%. So the rate of women\`s salvation is higher. 
  
  
  
