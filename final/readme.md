@@ -334,6 +334,7 @@ plt.savefig("final_Cabin_comparison.png")
 ![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_3/final_Cabin_comparison.png) 
 
 3.3.11 Summary
+
  From the picture above, we can conclude that the higher the grade, the probability of survival is higher.
  
  
