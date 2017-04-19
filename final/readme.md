@@ -242,15 +242,105 @@ final_data_7
  
  
  
-### 3.3   Analysis Three----
-  ![wrong]()
-  ![wrong]() 
+### 3.3   Analysis Three---- Anlysis Cabin with survived 
+
+ 3.3.1 Load data
+```
+raw_data = pd.read_csv('..\data\Titanic.csv',na_values='N/A')
+raw_data.head()
+```
+ 3.3.2 Extract the needed attributes 
+ ```
+ deal_data = raw_data[['PassengerId','Survived','Pclass','Cabin']]
+deal_data.head()
+ ```
+![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_3/need_attribute.png) 
+
+ 3.3.3 Check whether the null value of Cabin influence the Survival
+ ```
+ Survived_cabin = deal_data.Survived[pd.notnull(deal_data.Cabin)].value_counts()
+Survived_nullcabin = deal_data.Survived[pd.isnull(deal_data.Cabin)].value_counts()
+draw = DataFrame({'Have_cabin': Survived_cabin, 'Null_cabin' : Survived_nullcabin}).T
+draw.head()
+``` 
+![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_3/check_null.png) 
+
+ 3.3.4 Plot
+ ```
+ fig = plt.figure(figsize=(12,10))
+fig.set(alpha= 0.2)
+
+draw.plot(kind='bar',stacked = True)
+plt.title('Survival of Cabin')
+plt.xlabel('Cabin record?')
+plt.ylabel('Count')
+plt.savefig("Survival of Cabin.png")
+```
+![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_3/Survival%20of%20Cabin.png)
+
+3.3.5 Chek null values 
+ deal_data['Cabin'].isnull().sum() -----687
+
+3.3.6 Replace Null value
+
+ From above picture, the null value of cabin influence the Survival of people. So need to replace the missing values of Cabin with U( U for unknown)
+```
+deal_data['Cabin'] = deal_data['Cabin'].fillna('U')
+deal_data.head()
+```
+![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_3/deal_null.png)
+
+3.3.7 Deal with Cabin
+
+ To map each Cabin value with the first letter of cabin
+```
+deal_data['Cabin'].isnull().sum() --------- 0
+deal_data['Cabin'] = deal_data['Cabin'].map(lambda x :  'Cabin_'+ x[0])
+deal_data.head()
+```
+![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_3/cabin_letter.png)
+
+3.3.8 Show cabin with related survival
+
+ pd.crosstab(deal_data.Cabin,deal_data.Survived,margins =True)
+ ![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_3/crosstabe_1.png)
+ 
+3.3.9 Show cabin with related survival probability
+```
+final_draw = pd.crosstab(deal_data.Cabin,deal_data.Survived,margins =True).apply(lambda x : x/float(x[-1]),axis = 1)
+final_draw
+```
+ ![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_3/crosstabe_2.png) 
+
+3.3.10  Plot
+```
+fig = plt.figure(figsize=(12,12))
+fig.set(alpha= 0.2)
+
+final_draw.plot(kind='bar')
+
+plt.ylabel('Probability')
+plt.legend(loc = 'upper left',fontsize='small')
+plt.savefig("final_Cabin_comparison.png")
+```
+![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_3/final_Cabin_comparison.png) 
+
+
+         
  
  
 ### 3.4   Analysis Four---- 
 
-
-
-
+![wrong]
+![wrong]
+![wrong]
 
 ### 3.5   Analysis Five---- 
+
+
+
+![wrong]
+![wrong]
+![wrong]
+![wrong]
+![wrong]
