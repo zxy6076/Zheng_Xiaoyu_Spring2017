@@ -233,7 +233,13 @@ final_data_7
 ``` 
 ![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_2/Ageband_72.png) 
          
- 3.2.10 Summary
+ 3.2.10 Find age >50
+ 
+ female_data[female_data['Age'] > 50]
+ 
+ ![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_2/Age_50above.png)
+ 
+ 3.2.11 Summary
  
  From this picture above, we can see the age between 50 and 63 is the highest survived. Because the number of female is small and most of them is survived. For other ageband, the probability is greater than 50%. So the rate of women\`s salvation is higher. 
  
@@ -279,6 +285,7 @@ plt.savefig("Survival of Cabin.png")
 ![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_3/Survival%20of%20Cabin.png)
 
 3.3.5 Chek null values 
+
  deal_data['Cabin'].isnull().sum() -----687
 
 3.3.6 Replace Null value
@@ -303,6 +310,7 @@ deal_data.head()
 3.3.8 Show cabin with related survival
 
  pd.crosstab(deal_data.Cabin,deal_data.Survived,margins =True)
+ 
  ![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_3/crosstabe_1.png)
  
 3.3.9 Show cabin with related survival probability
