@@ -340,16 +340,23 @@ plt.savefig("final_Cabin_comparison.png")
  
 ### 3.4   Analysis Four---- 
 
-![wrong]
-![wrong]
-![wrong]
+![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_4/Class_Survival_comparison.png)
+![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_4/Fare_Pclass.png)
+![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_4/Fare_survival.png)
+![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_4/NO_null.png)
+![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_4/fareband.png)
+![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_4/fareband_survived.png)
+![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_4/final_draw1.png)
+![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_4/final_draw2.png)
+![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_4/needed_attributes.png)
+![wrong]()
 
 ### 3.5   Analysis Five---- 
 
 
 
-![wrong]
-![wrong]
-![wrong]
-![wrong]
-![wrong]
+![wrong]()
+![wrong]()
+![wrong]()
+![wrong]()
+![wrong]()
