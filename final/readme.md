@@ -356,6 +356,7 @@ deal_data.head()
  3.4.3 Check null values
  
   deal_data.isnull().sum()
+  
  ![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_4/NO_null.png)
  
  3.4.4 Cut the fare into 5 bins
@@ -366,6 +367,7 @@ deal_data.head()
  ![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_4/fareband.png)
  
  3.4.5 Fareband and Survived
+ 
  deal_data[['FareBand','Survived']].groupby(['FareBand'],as_index=False).mean().sort_values(by='FareBand',ascending = True)
  
  ![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_4/fareband_survived.png)
@@ -380,6 +382,7 @@ plt.title("Boxplot of Fare")
 plt.savefig('Fare_survival.png')
  ```
  ![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_4/Fare_survival.png)
+  
   So the higher the price, the more rescured
  
  3.4.7 Draw fare with class
@@ -392,6 +395,7 @@ plt.title("Boxplot of Fare and Pclass")
 plt.savefig('Fare_Pclass.png')
  ```
  ![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_4/Fare_Pclass.png)
+ 
  So the higher the class, the expensive fare.
  
  3.4.8 Class with Survived
@@ -417,6 +421,9 @@ plt.savefig("Class_Survival_comparison.png")
 ```
 ![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_4/Class_Survival_comparison.png)
 
+ 3.4.9 Summary
+ 
+ We can conclude that the higher the fare,  the more rescured.
 
 
 
