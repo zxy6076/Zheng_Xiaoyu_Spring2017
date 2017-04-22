@@ -338,8 +338,25 @@ plt.savefig("final_Cabin_comparison.png")
  From the picture above, we can conclude that the higher the grade, the probability of survival is higher.
  
  
-### 3.4   Analysis Four---- 
+### 3.4   Analysis Four---- Analysis the fare with survival
 
+ 3.4.1 Load data
+  ```
+  raw_data = pd.read_csv('..\data\Titanic.csv',na_values='N/A')  #,index_col=0
+raw_data.head()
+```
+ 3.4.2 keep the needed attributes
+ 
+```
+deal_data = raw_data[['PassengerId','Survived','Pclass','Fare']]
+deal_data.head()
+ ```
+ 
+ 
+ 
+ 
+ 
+ 
 ![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_4/Class_Survival_comparison.png)
 ![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_4/Fare_Pclass.png)
 ![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_4/Fare_survival.png)
