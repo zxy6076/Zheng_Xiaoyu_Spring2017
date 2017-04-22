@@ -345,28 +345,81 @@ plt.savefig("final_Cabin_comparison.png")
   raw_data = pd.read_csv('..\data\Titanic.csv',na_values='N/A')  #,index_col=0
 raw_data.head()
 ```
- 3.4.2 keep the needed attributes
+ 3.4.2 Keep the needed attributes
  
 ```
 deal_data = raw_data[['PassengerId','Survived','Pclass','Fare']]
 deal_data.head()
  ```
+ ![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_4/needed_attributes.png)
  
+ 3.4.3 Check null values
  
+  deal_data.isnull().sum()
+ ![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_4/NO_null.png)
  
+ 3.4.4 Cut the fare into 5 bins
+ ```
+ deal_data['FareBand'] = pd.qcut(deal_data['Fare'],5)
+deal_data.head()
+ ```
+ ![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_4/fareband.png)
  
+ 3.4.5 Fareband and Survived
+ deal_data[['FareBand','Survived']].groupby(['FareBand'],as_index=False).mean().sort_values(by='FareBand',ascending = True)
  
+ ![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_4/fareband_survived.png)
  
-![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_4/Class_Survival_comparison.png)
-![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_4/Fare_Pclass.png)
-![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_4/Fare_survival.png)
-![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_4/NO_null.png)
-![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_4/fareband.png)
-![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_4/fareband_survived.png)
-![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_4/final_draw1.png)
+ 3.4.6 Draw the relation between fare and survival
+ ```
+fare_1 = deal_data[deal_data['Survived'] == 1]
+fare_0 = deal_data[deal_data['Survived'] == 0]
+plt.boxplot((fare_1,fare_0),labels=('Survived','Dead'))
+plt.ylim([-10,150])
+plt.title("Boxplot of Fare")
+plt.savefig('Fare_survival.png')
+ ```
+ ![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_4/Fare_survival.png)
+  So the higher the price, the more rescured
+ 
+ 3.4.7 Draw fare with class
+```fare1 = deal_data.Fare[deal_data.Pclass == 1]
+fare2 = deal_data.Fare[deal_data.Pclass == 2]
+fare3 = deal_data.Fare[deal_data.Pclass == 3]
+plt.boxplot((fare1,fare2,fare3),labels=("Pclass1","Pclass2","Pclass3"))
+plt.ylim([-10,180])
+plt.title("Boxplot of Fare and Pclass")
+plt.savefig('Fare_Pclass.png')
+ ```
+ ![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_4/Fare_Pclass.png)
+ So the higher the class, the expensive fare.
+ 
+ 3.4.8 Class with Survived
+ ```
+ final_draw1 = pd.crosstab(deal_data.Survived,deal_data.Pclass,margins=True)
+final_draw1
+ ```
+ ![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_4/final_draw1.png)
+ 
+ ```
+ final_draw2 = pd.crosstab(deal_data.Survived,deal_data.Pclass,margins=True).apply(lambda x: x/float(x[-1]))
+final_draw2
+```
 ![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_4/final_draw2.png)
-![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_4/needed_attributes.png)
-![wrong]()
+
+```
+fig = plt.figure(figsize=(12,12))
+fig.set(alpha= 0.2)
+final_draw2.plot(kind = 'bar')
+plt.ylabel('Probability')
+plt.legend(loc = 'upper left',fontsize='small')
+plt.savefig("Class_Survival_comparison.png")
+```
+![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_4/Class_Survival_comparison.png)
+
+
+
+
 
 ### 3.5   Analysis Five---- 
 
