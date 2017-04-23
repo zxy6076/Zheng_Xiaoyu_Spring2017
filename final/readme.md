@@ -430,10 +430,81 @@ plt.savefig("Class_Survival_comparison.png")
 
 ### 3.5   Analysis Five---- 
 
+ 3.5.1 Load data
+ ```
+ raw_data = pd.read_csv('..\data\Titanic.csv',na_values='N/A')  #,index_col=0
+raw_data.tail()
+#sibsp----  of siblings / spouses aboard the Titanic	
+#parch---- of parents / children aboard the Titanic
+```
+3.5.2 Keep the needed attributes
+
+```deal_data = raw_data[['PassengerId','Survived','Pclass','SibSp','Parch']]
+deal_data.head()
+```
+![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_5/needed%E2%80%94%E2%80%94attributes.png)
+
+3.5.3 Check null values
+
+```
+deal_data['SibSp'].isnull().sum()
+deal_data['Parch'].isnull().sum()
+```
+
+3.5.4 Draw the account of SibSp
+ deal_data['SibSp'].value_counts().plot(kind='bar')
+![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_5/count_sib.png)
+
+3.5.5 Count value of Sibsp and survival
+```
+SibSp_data = pd.crosstab(deal_data.SibSp,deal_data.Survived,margins=True)
+SibSp_data
+```
+![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_5/slib_data.png)
+
+3.5.6 Count probability of  Sibsp and survival
+
+```SibSp_data2 = pd.crosstab(deal_data.SibSp,deal_data.Survived,margins=True).apply(lambda x : x/float(x[-1]),axis=1)
+SibSp_data2
+```
+
+![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_5/sib_data2.png)
+
+ we can coclude that with 1 to 2 Sibsp,the survival probability is higher。And without sibsp，the probability of dead is higher
+
+3.5.7 Draw the account of Parch
+
+ deal_data['Parch'].value_counts().plot(kind='bar')
+ 
+![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_5/count_parch.png)
+
+3.5.8 Count value of Parch and survival
+```
+Parch_data = pd.crosstab(deal_data.Parch,deal_data.Survived,margins=True)
+Parch_data
+```
+![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_5/parch_data.png)
+
+3.5.9 Count probability of Parch and survival
+
+```
+Parch_data2 = pd.crosstab(deal_data.Parch,deal_data.Survived,margins=True).apply(lambda x : x/float(x[-1]),axis=1)
+Parch_data2
+```
+![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_5/parch_data2.png)
+
+ we can coclude that with 1 to 2 Parch,the survival probability is higher。And without sibsp，the probability of dead is higher
+
+3.5.10 Concat Sibsp and Parch
+```
+full_data = pd.concat([Parch_data2,SibSp_data2],axis = 1)
+full_data
+```
+
+![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_5/concat.png)
 
 
-![wrong]()
-![wrong]()
-![wrong]()
-![wrong]()
-![wrong]()
+
+
+
+
