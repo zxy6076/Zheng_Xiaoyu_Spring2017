@@ -428,7 +428,7 @@ plt.savefig("Class_Survival_comparison.png")
 
 
 
-### 3.5   Analysis Five---- 
+### 3.5   Analysis Five----Analysis the SibSp and Parch related survival 
 
  3.5.1 Load data
  ```
@@ -439,7 +439,8 @@ raw_data.tail()
 ```
 3.5.2 Keep the needed attributes
 
-```deal_data = raw_data[['PassengerId','Survived','Pclass','SibSp','Parch']]
+```
+deal_data = raw_data[['PassengerId','Survived','Pclass','SibSp','Parch']]
 deal_data.head()
 ```
 ![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_5/needed%E2%80%94%E2%80%94attributes.png)
@@ -464,13 +465,15 @@ SibSp_data
 
 3.5.6 Count probability of  Sibsp and survival
 
-```SibSp_data2 = pd.crosstab(deal_data.SibSp,deal_data.Survived,margins=True).apply(lambda x : x/float(x[-1]),axis=1)
+```
+SibSp_data2 = pd.crosstab(deal_data.SibSp,deal_data.Survived,margins=True).apply(lambda x : x/float(x[-1]),axis=1)
 SibSp_data2
 ```
 
 ![wrong](https://github.com/zxy6076/Zheng_Xiaoyu_Spring2017/blob/master/final/analysis/ana_5/sib_data2.png)
 
  we can coclude that with 1 to 2 Sibsp,the survival probability is higher。And without sibsp，the probability of dead is higher
+
 
 3.5.7 Draw the account of Parch
 
